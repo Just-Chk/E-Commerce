@@ -2,7 +2,7 @@ E-Shop - Full Stack E-Commerce Application
 A modern, full-stack e-commerce application built with the MERN stack (MongoDB, Express.js, React-style frontend with vanilla JavaScript) featuring user authentication, product browsing, shopping cart functionality, and order management.
 
 🚀 Live Demo
-Frontend: https://chk0225-ecommerce.netlify.app
+Frontend: https://chk-ecommerce.netlify.app
 
 Backend API: https://e-commerce-cgg1.onrender.com
 
