@@ -28,7 +28,7 @@ app.use(cors
         'http://localhost:8080',
         'http://127.0.0.1:5500',
         'https://e-commerce-cgg1.onrender.com',
-        'https://chk0225-ecommerce.netlify.app'
+        'https://chk-ecommerce.netlify.app'
     ],
     credentials: true
 }));
