@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Shop</title>
+    <!-- core style (minimal, professional, animations + smooth scroll) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- header / navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="logo">E-Shop</h1>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#products" class="nav-link">Products</a>
+                    <a href="#cart" class="nav-link cart-icon" id="cart-icon-link">
+                        Cart <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                    <div id="auth-buttons">
+                        <a href="#login" class="nav-link" id="login-btn">Login</a>
+                        <a href="#signup" class="nav-link" id="signup-btn">Sign up</a>
+                    </div>
+                    <div id="user-info" style="display: none;">
+                        <span id="user-name"></span>
+                        <a href="#" id="logout-btn" class="nav-link">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- auth modals (minimal) -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Sign up</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-name">Name</label>
+                    <input type="text" id="signup-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- cart modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content cart-modal-content">
+            <span class="close">&times;</span>
+            <h2>Shopping cart</h2>
+            <div id="cart-items" class="cart-items"></div>
+            <div class="cart-total">
+                <h3>Total: $<span id="cart-total">0.00</span></h3>
+            </div>
+            <button id="checkout-btn" class="btn btn-primary">Proceed to checkout</button>
+        </div>
+    </div>
+
+    <!-- checkout modal (simulation) -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Checkout · simulation</h2>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="street">Street</label>
+                    <input type="text" id="street" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" id="state" required>
+                </div>
+                <div class="form-group">
+                    <label for="zip">ZIP</label>
+                    <input type="text" id="zip" required>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" id="country" value="USA" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Place order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- hero (minimal, subtle) -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-up">E-Shop — Essentials</h1>
+            <p class="fade-up delay-1">All your needs at one place.</p>
+            <a href="#products" class="btn btn-primary fade-up delay-2 smooth-scroll">Browse Products</a>
+        </div>
+    </section>
+
+    <!-- product section with filters -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Products</h2>
+            <div class="filters">
+                <input type="text" id="search" placeholder="Search product..." class="search-input">
+                <select id="category-filter" class="filter-select">
+                    <option value="">All categories</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Books">Books</option>
+                    <option value="Home">Home</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Other">Other</option>
+                </select>
+                <select id="sort-filter" class="filter-select">
+                    <option value="newest">Newest</option>
+                    <option value="price-asc">Price: low → high</option>
+                    <option value="price-desc">Price: high → low</option>
+                </select>
+                <div class="price-range">
+                    <input type="number" id="min-price" placeholder="Min $" class="price-input">
+                    <span>–</span>
+                    <input type="number" id="max-price" placeholder="Max $" class="price-input">
+                </div>
+            </div>
+            <!-- product grid injected via js -->
+            <div id="products-container" class="products-grid"></div>
+            <!-- subtle loading spinner (hidden by default) -->
+            <div id="loading-spinner" class="loading" style="display: none;">
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 E-Shop — All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- scripts (axios, then modules) -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
