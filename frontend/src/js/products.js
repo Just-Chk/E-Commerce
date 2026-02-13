@@ -1,10 +1,13 @@
 // Products Module
-const Products = {
+const Products = 
+{
     // Load all products with filters
-    async loadProducts(filters = {}) {
+    async loadProducts(filters = {}) 
+    {
         const container = document.getElementById('products-container');
         
-        try {
+        try 
+        {
             // Show loading state
             container.innerHTML = '<div class="loading"><div class="loading-spinner"></div><p>Loading products...</p></div>';
             
@@ -13,8 +16,10 @@ const Products = {
             
             // Build query string
             const queryParams = new URLSearchParams();
-            Object.keys(filters).forEach(key => {
-                if (filters[key] && filters[key] !== '') {
+            Object.keys(filters).forEach(key => 
+            {
+                if (filters[key] && filters[key] !== '') 
+                {
                     queryParams.append(key, filters[key]);
                 }
             });
@@ -27,18 +32,29 @@ const Products = {
             console.log('Products received:', response.data);
             
             this.displayProducts(response.data);
-        } catch (error) {
+        } 
+        
+        catch (error) 
+        {
             console.error('Error loading products:', error);
             
             let errorMessage = 'Failed to load products. ';
-            if (error.response) {
+            if (error.response) 
+            {
                 errorMessage += `Server responded with status ${error.response.status}`;
-                if (error.response.data && error.response.data.message) {
+                if (error.response.data && error.response.data.message) 
+                {
                     errorMessage += `: ${error.response.data.message}`;
                 }
-            } else if (error.request) {
+            } 
+            
+            else if (error.request) 
+            {
                 errorMessage += 'Could not connect to the server. Please check if the backend is running.';
-            } else {
+            } 
+            
+            else 
+            {
                 errorMessage += error.message;
             }
             
@@ -54,27 +70,35 @@ const Products = {
     },
 
     // Test API connection
-    async testConnection() {
-        try {
+    async testConnection() 
+    {
+        try 
+        {
             const response = await axios.get('/test');
             console.log('API connection test successful:', response.data);
             return true;
-        } catch (error) {
+        } 
+        
+        catch (error) 
+        {
             console.log('API connection test failed, using fallback data');
             return false;
         }
     },
 
     // Display sample products (fallback)
-    displaySampleProducts() {
+    displaySampleProducts() 
+    {
         const container = document.getElementById('products-container');
         
         // Check if sample products are already displayed
-        if (container.querySelector('.sample-products-note')) {
+        if (container.querySelector('.sample-products-note')) 
+        {
             return; // Already displaying sample products
         }
         
-        const sampleProducts = [
+        const sampleProducts = 
+        [
             {
                 _id: '1',
                 name: 'Wireless Headphones',
@@ -123,10 +147,12 @@ const Products = {
     },
 
     // Display products in grid
-    displayProducts(products) {
+    displayProducts(products) 
+    {
         const container = document.getElementById('products-container');
         
-        if (!products || products.length === 0) {
+        if (!products || products.length === 0) 
+        {
             container.innerHTML = '<div class="alert alert-info">No products found</div>';
             return;
         }
@@ -136,12 +162,14 @@ const Products = {
         container.innerHTML = '';
         
         // Re-add alerts
-        existingAlerts.forEach(alert => {
+        existingAlerts.forEach(alert => 
+        {
             container.appendChild(alert);
         });
 
         let html = '';
-        products.forEach(product => {
+        products.forEach(product => 
+        {
             html += `
                 <div class="product-card">
                     <img src="${product.imageUrl}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
@@ -163,7 +191,8 @@ const Products = {
     },
 
     // Initialize filters (same as before)
-    initFilters() {
+    initFilters() 
+    {
         const searchInput = document.getElementById('search');
         const categoryFilter = document.getElementById('category-filter');
         const sortFilter = document.getElementById('sort-filter');
@@ -172,8 +201,10 @@ const Products = {
 
         let debounceTimeout;
 
-        const applyFilters = () => {
-            const filters = {
+        const applyFilters = () => 
+        {
+            const filters = 
+            {
                 search: searchInput.value,
                 category: categoryFilter.value,
                 sort: sortFilter.value,
@@ -183,7 +214,8 @@ const Products = {
             this.loadProducts(filters);
         };
 
-        if (searchInput) {
+        if (searchInput) 
+        {
             searchInput.addEventListener('input', () => {
                 clearTimeout(debounceTimeout);
                 debounceTimeout = setTimeout(applyFilters, 500);
