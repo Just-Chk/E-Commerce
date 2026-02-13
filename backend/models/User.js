@@ -1,41 +1,51 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const userSchema = new mongoose.Schema({
-  name: {
+const userSchema = new mongoose.Schema
+({
+  name: 
+  {
     type: String,
     required: true,
     trim: true
   },
-  email: {
+  email: 
+  {
     type: String,
     required: true,
     unique: true,
     lowercase: true,
     trim: true
   },
-  password: {
+  password: 
+  {
     type: String,
     required: true
   }
-}, {
+}, 
+{
   timestamps: true
 });
 
-// ✅ FIXED: Remove the 'next' parameter and don't call it
-userSchema.pre('save', async function() {
+userSchema.pre('save', async function() 
+{
   // Only hash the password if it's modified (or new)
   if (!this.isModified('password')) return;
   
-  try {
+  try 
+  {
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
-  } catch (error) {
+  } 
+  
+  catch (error) 
+  {
     throw error; // Throw error instead of passing to next()
   }
 });
 
-userSchema.methods.comparePassword = async function(candidatePassword) {
+userSchema.methods.comparePassword = async function(candidatePassword) 
+{
   return await bcrypt.compare(candidatePassword, this.password);
 };
 
