@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 const Product = require('../models/Product');
 
+
 dotenv.config({ path: path.join(__dirname, '../.env') });
 
 const products = [
