@@ -6,13 +6,13 @@ const Product = require('../models/Product');
 dotenv.config({ path: path.join(__dirname, '../.env') });
 
 const products = [
-    // Electronics (6 existing + 4 new)
+    // Electronics
     {
         name: 'Wireless Headphones',
         description: 'High-quality wireless headphones with noise cancellation',
         price: 99.99,
         category: 'Electronics',
-        imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300',
+        imageUrl: 'https://media.istockphoto.com/id/1412240771/photo/headphones-on-white-background.jpg?s=612x612&w=0&k=20&c=DwpnlOcMzclX8zJDKOMSqcXdc1E7gyGYgfX5Xr753aQ=',
         stock: 50
     },
     {
@@ -47,16 +47,8 @@ const products = [
         imageUrl: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=300',
         stock: 45
     },
-    {
-        name: 'USB-C Hub',
-        description: '7-in-1 multiport adapter',
-        price: 39.99,
-        category: 'Electronics',
-        imageUrl: 'https://images.unsplash.com/photo-1625723044792-44de16ccb4e9?w=300',
-        stock: 55
-    },
 
-    // Clothing (1 existing + 4 new)
+    // Clothing
     {
         name: 'Cotton T-Shirt',
         description: 'Comfortable 100% cotton t-shirt',
@@ -65,14 +57,7 @@ const products = [
         imageUrl: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300',
         stock: 100
     },
-    {
-        name: 'Denim Jeans',
-        description: 'Classic blue denim jeans',
-        price: 59.99,
-        category: 'Clothing',
-        imageUrl: 'https://images.unsplash.com/photo-1542272452-6d1c6c748e3c?w=300',
-        stock: 75
-    },
+    
     {
         name: 'Hoodie',
         description: 'Warm fleece hoodie with kangaroo pocket',
@@ -89,16 +74,8 @@ const products = [
         imageUrl: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=300',
         stock: 85
     },
-    {
-        name: 'Winter Jacket',
-        description: 'Waterproof insulated winter jacket',
-        price: 129.99,
-        category: 'Clothing',
-        imageUrl: 'https://images.unsplash.com/photo-1539533018447-63fcce267498?w=300',
-        stock: 30
-    },
 
-    // Books (1 existing + 4 new)
+    // Books
     {
         name: 'JavaScript: The Good Parts',
         description: 'A must-read for JavaScript developers',
@@ -140,7 +117,7 @@ const products = [
         stock: 25
     },
 
-    // Home (1 existing + 4 new)
+    // Home
     {
         name: 'Coffee Maker',
         description: 'Programmable coffee maker with thermal carafe',
@@ -158,22 +135,6 @@ const products = [
         stock: 40
     },
     {
-        name: 'Bath Towel Set',
-        description: 'Set of 2 premium cotton bath towels',
-        price: 34.99,
-        category: 'Home',
-        imageUrl: 'https://images.unsplash.com/photo-1584021739973-932f1298de7b?w=300',
-        stock: 70
-    },
-    {
-        name: 'Throw Pillow',
-        description: 'Decorative velvet cushion',
-        price: 19.99,
-        category: 'Home',
-        imageUrl: 'https://images.unsplash.com/photo-1584102275572-11e4fbf99c8a?w=300',
-        stock: 55
-    },
-    {
         name: 'Plant Pot',
         description: 'Ceramic pot with drainage',
         price: 15.99,
@@ -182,31 +143,7 @@ const products = [
         stock: 80
     },
 
-    // Sports (1 existing + 4 new)
-    {
-        name: 'Yoga Mat',
-        description: 'Non-slip exercise yoga mat',
-        price: 34.99,
-        category: 'Sports',
-        imageUrl: 'https://images.unsplash.com/photo-1518615267842-d7521b7a01e0?w=300',
-        stock: 60
-    },
-    {
-        name: 'Dumbbell Set',
-        description: '10kg adjustable dumbbells',
-        price: 89.99,
-        category: 'Sports',
-        imageUrl: 'https://images.unsplash.com/photo-1586401100295-7a8096fd008a?w=300',
-        stock: 20
-    },
-    {
-        name: 'Soccer Ball',
-        description: 'Size 5 professional match ball',
-        price: 29.99,
-        category: 'Sports',
-        imageUrl: 'https://images.unsplash.com/photo-1614632537423-0e6bfc9a4e7b?w=300',
-        stock: 45
-    },
+    // Sports
     {
         name: 'Water Bottle',
         description: 'Stainless steel insulated 1L',
@@ -215,16 +152,8 @@ const products = [
         imageUrl: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=300',
         stock: 90
     },
-    {
-        name: 'Jump Rope',
-        description: 'Adjustable speed jump rope',
-        price: 14.99,
-        category: 'Sports',
-        imageUrl: 'https://images.unsplash.com/photo-1616683979841-5108e3c1a61e?w=300',
-        stock: 65
-    },
 
-    // Others (10 new products across miscellaneous categories)
+    // Others
     {
         name: 'Backpack',
         description: 'Water-resistant laptop backpack',
@@ -250,30 +179,6 @@ const products = [
         stock: 25
     },
     {
-        name: 'Gift Card',
-        description: '$50 digital gift card',
-        price: 50.00,
-        category: 'Other',
-        imageUrl: 'https://images.unsplash.com/photo-1607083206868-6c852a3d7e0b?w=300',
-        stock: 200
-    },
-    {
-        name: 'Travel Adapter',
-        description: 'Universal worldwide travel adapter',
-        price: 29.99,
-        category: 'Other',
-        imageUrl: 'https://images.unsplash.com/photo-1583863798839-2bdefabcd3f1?w=300',
-        stock: 70
-    },
-    {
-        name: 'Umbrella',
-        description: 'Windproof automatic umbrella',
-        price: 19.99,
-        category: 'Other',
-        imageUrl: 'https://images.unsplash.com/photo 1516631055317-0b99130e5fb8?w=300',
-        stock: 85
-    },
-    {
         name: 'Wallet',
         description: 'RFID blocking leather wallet',
         price: 34.99,
@@ -289,22 +194,6 @@ const products = [
         imageUrl: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=300',
         stock: 35
     },
-    {
-        name: 'Stationery Set',
-        description: 'Premium notebook and pen set',
-        price: 24.99,
-        category: 'Other',
-        imageUrl: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=300',
-        stock: 65
-    },
-    {
-        name: 'Phone Case',
-        description: 'Shockproof protective case',
-        price: 15.99,
-        category: 'Other',
-        imageUrl: 'https://images.unsplash.com/photo-1541877945-5f7a9f9b9a9b?w=300',
-        stock: 95
-    }
 ];
 
 mongoose.connect(process.env.MONGODB_URI)
